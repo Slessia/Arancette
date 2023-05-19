@@ -1,0 +1,73 @@
+---
+output:
+  pdf_document:
+    citation_package: biblatex
+    includes:
+        before_body: titolo.sty
+    keep_tex: yes
+    number_sections: yes
+    toc_depth: 2
+bibliography: bibliografia/biblioprova.bib
+biblio-style: numeric
+geometry: margin=1in
+header-includes:
+   - \usepackage{setspace} # per cambiare interlinea
+   - \usepackage{multicol} # le colonne delle tabelle
+   - \usepackage{caption}  # caption delle figure/tabelle
+   - \usepackage[italian]{babel} # caption in italiano
+   - \usepackage{graphicx} # per inserire le figure
+   - \usepackage{subcaption} # per inserirele caption alle figure
+---
+
+# Introduzione
+Ci sono varie arancette appese alla Figura \ref{fig:arancio}. Poi ci sono arancette raccolte alla Figura \ref{sub:arance} e il plot di tutte queste arancette alla Figura \ref{sub:grafico}.
+
+\begin{figure}
+\centering
+\caption{Arancette su albero}
+\label{fig:arancio} % etichetta che permette di richiamare la figura
+```{r,out.width="50%", eval = T, echo=FALSE}
+knitr::include_graphics("img/Arancio.jpg")
+```
+\end{figure}
+
+\begin{figure}
+\centering 
+\begin{subfigure}{0.3\textwidth}
+```{r out.width="80%",echo = FALSE} 
+knitr::include_graphics("img/Arance.jpeg") 
+```
+\caption{Arancette raccolte} 
+\label{sub:arance}
+\end{subfigure} 
+\begin{subfigure}{0.3\textwidth} 
+```{r out.width="80%", echo = FALSE} 
+plot(Orange)
+```
+\caption{Grafico arancette} 
+\label{sub:grafico} 
+\end{subfigure} 
+\end{figure}
+
+\newpage
+
+# Metodo
+In Equazione \ref{eq:stand} è riportata la formula della standardizzazione.
+
+\begin{equation}
+\label{eq:stand}
+  z=\frac{x_i-\bar{X}}{sd}
+\end{equation}
+  
+\newpage
+# Risultati
+I risultati sono riportati in Tabella \ref{tab:tabella}
+```{r, results='asis', echo = F}
+print(xtable::xtable(Orange[1:7, ],
+                    caption = "Tabella delle arancette",
+                     label = "tab:tabella"),
+      comment = FALSE,
+      caption.placement = "top")
+```
+\newpage
+

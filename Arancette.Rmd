@@ -1,0 +1,134 @@
+---
+title: "Arancette"
+subtitle: "Circonferenza delle arancette"
+author: "Alessia Valmori"
+date: "Università degli Studi di Padova"
+output: 
+  pdf_document: 
+    number_sections: true
+    toc: true
+    toc_depth: 1
+linestretch: 2
+geometry: margin = 1in
+bibliography: bibliografia/biblioprova.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(echo = F,
+                      message = F,
+                      warning = F,
+                      error = F,
+                      comment = "",
+                      fig.align = "centre",
+                      out.width = "50%")
+
+library(emoji)
+library(knitr)
+library(stargazer)
+load("Environment.RData")
+
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) { 
+  if (!is.null(n <- options$out.lines)) {
+    x <- xfun::split_lines(x) 
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+}
+x <- paste(x, collapse = "\n") 
+}
+hook_output(x, options) 
+})
+```
+
+\newpage
+
+# Quantità di alberi
+
+@ferraro_let_2005 dicono che gli alberi sono **5**. 
+
+> Cinque alberi più o meno grandi
+>
+> 1. Numero 1
+  2. Numero 2
+>      - Molto bello [^1]
+  3. Numero 3
+  4. Numero 4
+>      - Molto brutto [^2]
+  5. Numero 5
+    
+[^1]: per chi ha gusti simili ai miei, tipo \color{blue}[questo](https://it.wikipedia.org/wiki/Citrus_×_sinensis)\normalcolor.
+[^2]: sempre per chi ha gusti simili ai miei
+    
+
+
+## Numero degli alberi
+
+Gli alberi sono ***5***.
+
+\newpage
+
+![arancette su albero](img/Arancio.jpg)
+
+\newpage
+
+# Grandezza delle arance prodotte
+
+Ogni albero produce *\color{orange}\Huge arance*\normalcolor\normalsize \hspace{0.2mm} di grandezza differente [@arndt_death_2003].
+
+
+## Albero che produce le arance più grandi
+
+L'albero che produce arance più grandi è il numero ***\color{orange}4***\normalcolor.
+
+Le arance sono molto buono [vedere anche, @pratto_social_1994]
+
+```{r arancette_sfuse, fig.cap="arancette raccolte", fig.align = "right"}
+knitr::include_graphics(path = "img/Arance.jpeg")
+```
+
+```{r data, out.lines=4}
+x <- round(mean (data$age),2)
+head(data)
+m
+```
+
+Gli alberi hanno età media di `r x` anni.
+
+```{r, comment= ":)"}
+summary(data)
+```
+
+```{r, eval = F}
+m
+plot(data$y ~data$x)
+```
+
+```{r, out.width = "100%"}
+plot(data$y ~data$x)
+```
+
+```{r, echo = T, eval = F}
+plot(data$y ~data$x)
+```
+
+```{r, results="asis"}
+stargazer(data, type = "latex", summary = T, title = "Summary arancette",digits = 3, header = F)
+stargazer(m, type = "latex", summary = T, title = "Modello di regressione",digits = 2, header = F, intercept.bottom = F, covariate.labels = c("Albero Augusto", "Albero Alberto", "Albero Antonio", "Albero Alfonso","Albero Ascanio"), dep.var.labels = "circonferenza arancette")
+m0 <- lm(y ~ 1, data = data)
+stargazer(m0, m, type = "latex", summary = T, title = "Model comparison", digits = 2, header = F, intercept.bottom = F, covariate.labels = c("Albero Augusto", "Albero Alberto", "Albero Antonio", "Albero Alfonso","Albero Ascanio"), dep.var.labels = "circonferenza arancette")
+```
+
+
+```{r}
+b <- scale(data$y)
+```
+
+$$z = \frac{x_i - \bar{X}}{sd}$$
+
+$$z_1 = \frac{`r data[1,4]` - `r round(mean(data$y),2)`}{`r round(sd(data$y),2)`} = `r round((b[1]), 2)`$$
+
+
+\newpage
+
+# Bibliografia

@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1042612/0c3c2452024248b5bca19bafa16d04fb
+bundleId: https://api.rpubs.com/api/v1/document/1042612/0c3c2452024248b5bca19bafa16d04fb
+url: http://rpubs.com/Slessia/1042612
+when: 1684331239.19337
+lastSyncTime: 1684331239.19338

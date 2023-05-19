@@ -1,0 +1,114 @@
+---
+title: "Presentazione Arancette in Latex"
+author: |
+   | Alessia Valmori
+   | University of Padova
+date: '18.05.2023'
+institute: "alessia.valori@unipd.it"
+output:
+  beamer_presentation:
+    theme: boxes
+    colortheme: lily
+    fonttheme: professionalfonts
+    highlight: haddock
+header-includes:
+     - \AtBeginDocument{\title[Arancette]{Presentazione arancette}}
+     - \usepackage{graphicx}
+     - \usepackage{setspace}
+     - \usepackage{tabularx}
+     - \usepackage[italian]{babel}
+     - \usepackage{tikzsymbols}
+     - \usepackage{subcaption}
+     - \usepackage{tikz}
+     - \usepackage{multicol}
+     - \usepackage{booktabs}
+     - \usepackage{inputenc}
+     - \newcommand\Factor{1.2}
+     - \setbeamerfont{subtitle}{size=\large, series=\bfseries}
+     - \setbeamersize{text margin left=5mm,text margin right=5mm} 
+     - \definecolor{template}{RGB}{236, 124, 038}
+     - \definecolor{back}{RGB}{236, 124, 038}
+     - \definecolor{brown}{RGB}{138, 102, 066}
+     - \setbeamercolor{frametitle}{bg=back!40}
+     - \setbeamertemplate{frametitle}[default][center]
+     - \setbeamercolor{title}{fg=brown}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Slide 1
+
+
+\begin{columns}
+\begin{column}{0.50\textwidth}
+\onslide<1-2>Le arancette sono molto carine.
+\begin{figure}
+\centering
+\onslide<2-2>
+\caption{Arancette su albero}
+\label{fig:arancio1}
+```{r,out.width="50%", eval = T, echo=FALSE}
+knitr::include_graphics("img/Arancio.jpg")
+```
+\end{figure}
+\end{column}
+
+\onslide<3->
+\begin{column}{0.50\textwidth}
+Gli aranci sono molto carini.
+\end{column}
+
+\end{columns}
+
+## 
+
+::: columns
+:::: column
+```{r}
+plot(Orange)
+```
+::::
+:::: column
+```{r}
+head(Orange)
+```
+::::
+:::
+
+
+##
+
+\onslide<3->
+
+\begin{block}{Quale sarà la circonferenza delle arancette?}
+
+Scopriamolo insieme!
+
+\end{block}
+
+\onslide<2-2>
+
+\begin{exampleblock}{E quale sarà l'età degli alberi?}
+
+Degli aranci per la precisione
+
+\end{exampleblock}
+
+\onslide<1->
+
+\begin{alertblock}{E come si chiameranno gli alberi?}
+
+Alberto, Alfonso, Alfredo, Antonio, Augusto, Ascanio
+\begin{figure}
+\centering
+\caption{Arancette su albero}
+\label{fig:arancio}
+```{r,out.width="10%", eval = T, echo=FALSE}
+knitr::include_graphics("img/Arancio.jpg")
+```
+\end{figure}
+
+\end{alertblock}

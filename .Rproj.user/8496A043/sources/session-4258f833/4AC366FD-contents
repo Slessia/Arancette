@@ -1,0 +1,130 @@
+---
+title: "Arancette_quarto"
+format: 
+    html:
+      theme: superhero
+      toc: true
+      toc-title: I miei contenuti
+      toc-location: body
+      toc-depth: 3
+      code-tools:
+        source: true
+        toggle: false
+        caption: none
+editor: source
+lang: it
+execute: 
+  echo: false
+---
+
+## Primo capitolo
+
+L'immagine @fig-prima è di arancette
+
+```{r}
+#| fig-cap: "La mia immagine"
+#| fig-cap-location: top
+#| out-width: 50%
+#| label: fig-prima
+#| fig-align: center
+knitr::include_graphics("img/Arance.jpeg")
+```
+
+## Secondo capitolo
+
+```{r}
+#| fig-cap: "Il mio grafico"
+#| fig-cap-location: top
+#| out-width: 50%
+#| fig-align: center
+#| label: fig-grafico
+plot(Orange)
+```
+In @fig-grafico c'è un grafico
+
+
+## Terzo capitolo
+
+```{r}
+#| tbl-cap-location: top
+#| tbl-cap: Una tabella di esempio
+#| tbl-subcap: per far vedere come funzionano
+#| label: tab-esempio
+kableExtra::kable(Orange[1:6, ])
+```
+
+
+## Quarto capitolo
+
+:::: {.columns}
+
+
+::: {.column width="33%"}
+
+Testo nella prima colonna
+
+:::
+
+::: {.column width="33%"}
+
+Testo nella seconda colonna
+
+:::
+
+::: {.column width="33%"}
+
+Testo nella terza colonna
+
+:::
+
+::::
+
+## Quinto capitolo
+
+::: {.panel-tabset}
+
+## Introduzione
+
+L'immagine @fig-albero è di arancette
+
+```{r}
+#| fig-cap: "Albero"
+#| fig-cap-location: top
+#| out-width: 50%
+#| label: fig-albero
+#| fig-align: center
+knitr::include_graphics("img/Arancio.jpg")
+```
+
+## I dati
+
+
+Primo tabset con una tabella contenente il dataset
+
+
+## Il grafico
+
+Terzo tabset con il grafico dei dati
+
+
+:::
+
+
+## Sesto capitolo
+
+::: {.grid}
+
+::: {.g-col-4}
+
+Prima colonna più stretta della seconda
+
+:::
+
+::: {.g-col-8}
+
+Colonna più larga
+
+:::
+
+:::
+
